@@ -1,0 +1,799 @@
+<!DOCTYPE html> 
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChitraHarsha - Brilliant Joy in Every Transaction</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter for body, Exo 2 for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="ChitraHarsha (CHR) - A next-generation cryptocurrency platform leveraging AI, Quantum-ready speed, and supercomputer technology for secure, instant, and intelligent transactions."
+    />
+    <meta
+      name="keywords"
+      content="ChitraHarsha, CHR, Cryptocurrency, Blockchain, AI, Quantum Computing, Supercomputer, NLP, Web3, Decentralised Cryptocurrency, Crypto Wallet"
+    />
+
+    <style>
+      /* Custom styles for the futuristic theme and animations */
+      :root {
+        --primary-glow: rgba(59, 130, 246, 0.4);
+        --secondary-glow: rgba(139, 92, 246, 0.4);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0d0f1a;
+        color: #e0e0e0;
+        overflow-x: hidden;
+      }
+
+      .font-exo {
+        font-family: "Exo 2", sans-serif;
+      }
+
+      /* Moving Aurora Background */
+      .aurora-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: radial-gradient(
+            ellipse at 40% 20%,
+            var(--primary-glow) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 60% 80%,
+            var(--secondary-glow) 0%,
+            transparent 50%
+          );
+        animation: aurora 15s linear infinite;
+      }
+
+      @keyframes aurora {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Glassmorphism Effect */
+      .glass-card {
+        background: rgba(23, 26, 43, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+      }
+
+      /* Gradient Text */
+      .gradient-text {
+        background: linear-gradient(90deg, #818cf8, #a78bfa);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Scroll-triggered animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Lightning Canvas */
+      #lightning-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div class="aurora-background"></div>
+    <div class="relative min-h-screen">
+      <!-- Header -->
+      <header
+        id="header"
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      >
+        <nav
+          class="container mx-auto px-6 py-4 flex justify-between items-center"
+        >
+          <div class="flex items-center space-x-3">
+            <!-- SVG Logo -->
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 256 256"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88Z"
+                fill="url(#paint0_linear_1_2)"
+              />
+              <path
+                d="M168 88h-16v80h16a40 40 0 0 0 0-80Zm-8 64v-48a24 24 0 0 1 0 48Z"
+                fill="url(#paint1_linear_1_2)"
+              />
+              <path
+                d="M120 128a40 40 0 0 1-40-40h16a24 24 0 0 0 24 24Z"
+                fill="url(#paint2_linear_1_2)"
+              />
+              <path
+                d="M120 128a40 40 0 0 0-40 40h16a24 24 0 0 1 24-24Z"
+                fill="url(#paint3_linear_1_2)"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_1_2"
+                  x1="128"
+                  y1="24"
+                  x2="128"
+                  y2="232"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#A78BFA" />
+                  <stop offset="1" stop-color="#3B82F6" />
+                </linearGradient>
+                <linearGradient
+                  id="paint1_linear_1_2"
+                  x1="152"
+                  y1="88"
+                  x2="152"
+                  y2="168"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#C4B5FD" />
+                  <stop offset="1" stop-color="#60A5FA" />
+                </linearGradient>
+                <linearGradient
+                  id="paint2_linear_1_2"
+                  x1="100"
+                  y1="88"
+                  x2="100"
+                  y2="128"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#C4B5FD" />
+                  <stop offset="1" stop-color="#60A5FA" />
+                </linearGradient>
+                <linearGradient
+                  id="paint3_linear_1_2"
+                  x1="100"
+                  y1="128"
+                  x2="100"
+                  y2="168"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#C4B5FD" />
+                  <stop offset="1" stop-color="#60A5FA" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="font-exo text-2xl font-bold text-white tracking-wider"
+              >ChitraHarsha</span
+            >
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#home" class="text-gray-300 hover:text-white transition"
+              >Home</a
+            >
+            <a
+              href="#features"
+              class="text-gray-300 hover:text-white transition"
+              >Features</a
+            >
+            <a href="#blogs" class="text-gray-300 hover:text-white transition"
+              >Blogs</a
+            >
+            <a href="#contact" class="text-gray-300 hover:text-white transition"
+              >Contact Us</a
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <button
+              class="px-4 py-2 text-sm font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg shadow-lg transition transform hover:scale-105"
+            >
+              Launch App
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main class="pt-20">
+        <!-- Hero Section -->
+        <section
+          id="home"
+          class="relative h-[90vh] flex items-center justify-center text-center overflow-hidden"
+        >
+          <canvas id="lightning-canvas"></canvas>
+          <div class="relative z-10 container mx-auto px-6">
+            <h1
+              class="font-exo text-5xl md:text-7xl font-extrabold text-white leading-tight"
+            >
+              Chitra<span class="gradient-text">Harsha</span>
+            </h1>
+            <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              Brilliant Joy in Every Transaction. The world's first crypto
+              platform powered by Quantum-ready architecture and
+              Supercomputer-grade AI for unparalleled speed and intelligence.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+              <button
+                class="px-8 py-3 font-semibold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-lg shadow-violet-500/30 transition transform hover:scale-105"
+              >
+                Create Your Wallet
+              </button>
+              <button
+                class="px-8 py-3 font-semibold text-white bg-white/10 border border-white/20 hover:bg-white/20 rounded-xl transition"
+              >
+                Explore Whitepaper
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+              <h2 class="font-exo text-4xl font-bold text-white">
+                The Future, Today.
+              </h2>
+              <p class="mt-2 text-gray-400">
+                Discover the technologies that set ChitraHarsha apart.
+              </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <!-- Feature 1: Quantum Speed -->
+              <div class="glass-card p-6 text-center reveal">
+                <h3 class="font-exo text-xl font-bold text-white">
+                  Quantum & Supercomputer Core
+                </h3>
+                <p class="mt-2 text-gray-400 text-sm">
+                  Our hybrid architecture processes transactions at near-instant
+                  speeds, preparing for the quantum computing era.
+                </p>
+              </div>
+              <!-- Feature 2: Crypto Lens -->
+              <div
+                class="glass-card p-6 text-center reveal"
+                style="transition-delay: 100ms"
+              >
+                <h3 class="font-exo text-xl font-bold text-white">
+                  AI Crypto Lens
+                </h3>
+                <p class="mt-2 text-gray-400 text-sm">
+                  Scan anything with your camera. Our AI identifies objects,
+                  provides market data, and suggests CHR payment options.
+                </p>
+              </div>
+              <!-- Feature 3: Security -->
+              <div
+                class="glass-card p-6 text-center reveal"
+                style="transition-delay: 200ms"
+              >
+                <h3 class="font-exo text-xl font-bold text-white">
+                  Next-Gen Security
+                </h3>
+                <p class="mt-2 text-gray-400 text-sm">
+                  Secure your assets with futuristic Passkeys and multi-factor
+                  OTP verification, backed by Google Cloud.
+                </p>
+              </div>
+              <!-- Feature 4: Chatbot -->
+              <div
+                class="glass-card p-6 text-center reveal"
+                style="transition-delay: 300ms"
+              >
+                <h3 class="font-exo text-xl font-bold text-white">
+                  LLM-Powered Chatbot
+                </h3>
+                <p class="mt-2 text-gray-400 text-sm">
+                  Your personal crypto assistant. Get market analysis, execute
+                  trades, and manage your portfolio with simple commands.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Crypto Lens Demo Section -->
+        <section id="crypto-lens" class="py-20 bg-black/20">
+          <div
+            class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12"
+          >
+            <div class="md:w-1/2 reveal">
+              <h2 class="font-exo text-4xl font-bold text-white">
+                ChitraHarsha AI Lens
+              </h2>
+              <p class="mt-4 text-gray-300">
+                Experience the power of our image recognition AI. Upload an
+                image of a product, artwork, or even a landmark, and let our LLM
+                provide you with real-time insights, valuations, and seamless
+                ChitraHarsha (CHR) payment integrations.
+              </p>
+              <div class="mt-6">
+                <label
+                  for="image-upload"
+                  class="cursor-pointer inline-block px-6 py-3 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg shadow-lg transition transform hover:scale-105"
+                >
+                  Scan an Image
+                </label>
+                <input
+                  type="file"
+                  id="image-upload"
+                  class="hidden"
+                  accept="image/*"
+                />
+                <p class="text-xs mt-2 text-gray-500">
+                  <!-- Developer Note: This is a frontend simulation. In a real app, this would make an API call to a cloud function running a Vision AI model. -->
+                </p>
+              </div>
+            </div>
+            <div
+              class="md:w-1/2 w-full glass-card p-4 reveal"
+              style="transition-delay: 200ms"
+            >
+              <div
+                id="lens-result"
+                class="aspect-video bg-gray-900/50 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-600 transition-all duration-300"
+              >
+                <div id="lens-placeholder" class="text-center text-gray-500">
+                  <p>Awaiting image scan...</p>
+                </div>
+                <div
+                  id="lens-output"
+                  class="hidden w-full h-full flex flex-col"
+                >
+                  <img
+                    id="uploaded-image"
+                    src="#"
+                    alt="Uploaded"
+                    class="w-full h-3/5 object-cover rounded-t-lg"
+                  />
+                  <div class="p-4 bg-gray-800/50 rounded-b-lg flex-grow">
+                    <div
+                      id="lens-loader"
+                      class="text-center text-sm text-gray-300"
+                    >
+                      Analyzing with AI...
+                    </div>
+                    <div id="lens-text-result" class="hidden">
+                      <h4 class="font-bold text-white">Analysis Complete</h4>
+                      <p class="text-sm text-gray-300 mt-1">
+                        <strong>Item:</strong>
+                        <span id="item-name">Vintage Camera</span>
+                      </p>
+                      <p class="text-sm text-gray-300">
+                        <strong>Est. Value:</strong>
+                        <span id="item-value">~150.75 CHR</span>
+                      </p>
+                      <button
+                        class="mt-2 w-full text-xs py-1 font-semibold text-white bg-green-600 hover:bg-green-700 rounded-md transition"
+                      >
+                        Pay with CHR
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Blogs Section -->
+        <section id="blogs" class="py-20">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+              <h2 class="font-exo text-4xl font-bold text-white">
+                Insights from the New Economy
+              </h2>
+              <p class="mt-2 text-gray-400">
+                Read our latest articles on DeFi, AI in Blockchain, and the
+                future of finance.
+              </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Blog Post 1 -->
+              <div class="glass-card overflow-hidden reveal">
+                <img
+                  src="https://placehold.co/600x400/111827/a78bfa?text=DeFi+2.0"
+                  alt="Blog Image 1"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-6">
+                  <h3 class="font-exo text-xl font-bold text-white">
+                    The Quantum Leap: How ChitraHarsha is Preparing for the
+                    Future of Computing
+                  </h3>
+                  <p class="mt-3 text-gray-400 text-sm">
+                    Quantum computers pose a threat to current encryption
+                    standards. Discover how ChitraHarsha's quantum-resistant
+                    ledger is built for long-term security.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-block mt-4 font-semibold text-indigo-400 hover:text-indigo-300"
+                    >Read More &rarr;</a
+                  >
+                </div>
+              </div>
+              <!-- Blog Post 2 -->
+              <div
+                class="glass-card overflow-hidden reveal"
+                style="transition-delay: 150ms"
+              >
+                <img
+                  src="https://placehold.co/600x400/111827/818cf8?text=AI+in+Crypto"
+                  alt="Blog Image 2"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-6">
+                  <h3 class="font-exo text-xl font-bold text-white">
+                    Beyond the Hype: Practical AI Applications in Cryptocurrency
+                  </h3>
+                  <p class="mt-3 text-gray-400 text-sm">
+                    From the AI Lens identifying real-world assets to NLP-driven
+                    chatbots, learn how we're integrating machine learning to
+                    add real utility to crypto.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-block mt-4 font-semibold text-indigo-400 hover:text-indigo-300"
+                    >Read More &rarr;</a
+                  >
+                </div>
+              </div>
+              <!-- Blog Post 3 -->
+              <div
+                class="glass-card overflow-hidden reveal"
+                style="transition-delay: 300ms"
+              >
+                <img
+                  src="https://placehold.co/600x400/111827/ffffff?text=Web3+Security"
+                  alt="Blog Image 3"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-6">
+                  <h3 class="font-exo text-xl font-bold text-white">
+                    What Are Passkeys? A Simpler, More Secure Future for Your
+                    Digital Wallet
+                  </h3>
+                  <p class="mt-3 text-gray-400 text-sm">
+                    Passwords are a thing of the past. We break down how Passkey
+                    technology works and why it's the new gold standard for
+                    securing your ChitraHarsha assets.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-block mt-4 font-semibold text-indigo-400 hover:text-indigo-300"
+                    >Read More &rarr;</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-black/20">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+              <h2 class="font-exo text-4xl font-bold text-white">
+                Get in Touch
+              </h2>
+              <p class="mt-2 text-gray-400">
+                Have questions or want to partner with us? We’d love to hear
+                from you.
+              </p>
+            </div>
+            <div class="max-w-2xl mx-auto reveal">
+              <form class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+                <textarea
+                  placeholder="Your Message"
+                  rows="5"
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                ></textarea>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="px-8 py-3 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg shadow-lg transition transform hover:scale-105"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900/50">
+        <div class="container mx-auto px-6 py-8">
+          <div class="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 class="font-exo text-lg font-bold text-white">
+                ChitraHarsha
+              </h3>
+              <p class="mt-2 text-gray-400 text-sm">
+                Decentralizing the future with intelligence and speed.
+              </p>
+            </div>
+            <div class="md:col-span-2">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+                <div>
+                  <h4 class="font-semibold text-white">Quick Links</h4>
+                  <ul class="mt-4 space-y-2">
+                    <li>
+                      <a href="#" class="text-gray-400 hover:text-white text-sm"
+                        >About Us</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#blogs"
+                        class="text-gray-400 hover:text-white text-sm"
+                        >Blogs</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="text-gray-400 hover:text-white text-sm"
+                        >Careers</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white">Support</h4>
+                  <ul class="mt-4 space-y-2">
+                    <li>
+                      <a href="#" class="text-gray-400 hover:text-white text-sm"
+                        >FAQs</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#contact"
+                        class="text-gray-400 hover:text-white text-sm"
+                        >Contact Us</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="text-gray-400 hover:text-white text-sm"
+                        >Help Center</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white">Legal</h4>
+                  <ul class="mt-4 space-y-2">
+                    <li>
+                      <a href="#" class="text-gray-400 hover:text-white text-sm"
+                        >Terms & Conditions</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="text-gray-400 hover:text-white text-sm"
+                        >Privacy Policy</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm"
+          >
+            <p>
+              &copy; 2025 ChitraHarsha. All Rights Reserved. This is a
+              conceptual prototype.
+            </p>
+            <p class="mt-1">
+              Built with future-ready technology for a decentralized world.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- Header Scroll Effect ---
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            header.classList.add(
+              "bg-gray-900/80",
+              "backdrop-blur-sm",
+              "shadow-lg"
+            );
+          } else {
+            header.classList.remove(
+              "bg-gray-900/80",
+              "backdrop-blur-sm",
+              "shadow-lg"
+            );
+          }
+        });
+
+        // --- Lightning Canvas Animation ---
+        const canvas = document.getElementById("lightning-canvas");
+        const ctx = canvas.getContext("2d");
+        let w,
+          h,
+          lightning = [];
+
+        function initCanvas() {
+          w = canvas.width = window.innerWidth;
+          h = canvas.height = canvas.offsetHeight;
+          lightning = [];
+        }
+        initCanvas();
+        window.addEventListener("resize", initCanvas);
+
+        class Lightning {
+          constructor() {
+            this.x = Math.random() * w;
+            this.y = (Math.random() * h) / 4;
+            this.path = [{ x: this.x, y: this.y }];
+            this.life = 0;
+            this.maxLife = Math.random() * 20 + 10;
+            this.color = `rgba(167, 139, 250, ${Math.random() * 0.4 + 0.2})`;
+          }
+          draw() {
+            ctx.beginPath();
+            ctx.moveTo(this.path[0].x, this.path[0].y);
+            for (let i = 1; i < this.path.length; i++) {
+              ctx.lineTo(this.path[i].x, this.path[i].y);
+            }
+            ctx.strokeStyle = this.color;
+            ctx.lineWidth = Math.random() * 2 + 1;
+            ctx.stroke();
+
+            this.update();
+          }
+          update() {
+            this.life++;
+            if (this.life < this.maxLife) {
+              const lastPoint = this.path[this.path.length - 1];
+              const newPoint = {
+                x: lastPoint.x + (Math.random() * 20 - 10),
+                y: lastPoint.y + (Math.random() * 15 + 5),
+              };
+              this.path.push(newPoint);
+            }
+          }
+        }
+
+        function animateLightning() {
+          ctx.clearRect(0, 0, w, h);
+          if (Math.random() < 0.05) {
+            // Add new lightning bolt occasionally
+            lightning.push(new Lightning());
+          }
+
+          lightning.forEach((l, index) => {
+            l.draw();
+            if (l.life >= l.maxLife) {
+              lightning.splice(index, 1);
+            }
+          });
+
+          requestAnimationFrame(animateLightning);
+        }
+        animateLightning();
+
+        // --- Scroll Reveal Animations ---
+        const revealElements = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        revealElements.forEach((el) => observer.observe(el));
+
+        // --- AI Crypto Lens Simulation ---
+        const imageUpload = document.getElementById("image-upload");
+        const lensPlaceholder = document.getElementById("lens-placeholder");
+        const lensOutput = document.getElementById("lens-output");
+        const uploadedImage = document.getElementById("uploaded-image");
+        const lensLoader = document.getElementById("lens-loader");
+        const lensTextResult = document.getElementById("lens-text-result");
+
+        imageUpload.addEventListener("change", function (e) {
+          if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              uploadedImage.src = event.target.result;
+              lensPlaceholder.classList.add("hidden");
+              lensOutput.classList.remove("hidden");
+              lensLoader.style.display = "block";
+              lensTextResult.classList.add("hidden");
+
+              // Simulate API call to Vision AI model
+              setTimeout(() => {
+                lensLoader.style.display = "none";
+                lensTextResult.classList.remove("hidden");
+
+                // In a real app, this data would come from the AI/LLM response
+                // based on the uploaded image.
+              }, 2500);
+            };
+            reader.readAsDataURL(e.target.files[0]);
+          }
+        });
+
+        // --- Developer/Backend Notes ---
+        /*
+                This file is a frontend prototype. A full-stack implementation would require:
+                
+                1.  **Backend Framework:** Node.js (Express), Python (Django/Flask), or Go.
+                2.  **Database:** Google Firestore (as requested) for user data, wallet info, and transaction history.
+                    - User data would be stored in collections like `/users/{userId}/profile`.
+                    - App data could be in `/apps/{appId}/config`.
+                3.  **Authentication:** Firebase Authentication for handling sign-up, sign-in, OTP, and Passkeys.
+                4.  **AI/ML Integration:**
+                    - **Crypto Lens:** Google Cloud Vision API for image analysis. The result would be fed to a Gemini model (via its API) with a specific prompt to get item name, estimated value, and context.
+                    - **Chatbot:** A dedicated API endpoint that interfaces with the Gemini API, maintaining conversation history for context.
+                5.  **Blockchain Interaction:** A service to connect to the ChitraHarsha blockchain nodes (RPC endpoints) for sending transactions, checking balances, etc.
+                6.  **Cloud Functions:** For serverless operations like processing image uploads, sending notifications, or handling database triggers.
+                7.  **Quantum/Supercomputer Aspect:** This is conceptual for a prototype. In reality, it would mean the core blockchain protocol is designed with post-quantum cryptography (PQC) algorithms and optimized for high-performance computing clusters, which would be a massive R&D effort.
+             */
+      });
+    </script>
+  </body>
+</html>
