@@ -1,599 +1,737 @@
-"<!DOCTYPE html>
-  <html lang="en" class="scroll-smooth">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>ChitraHarsha - Brilliant Joy in Every Transaction</title>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChitraHarsha - Brilliant Joy in Every Transaction</title>
 
-      <!-- Tailwind CSS -->
-      <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-      <!-- Google Fonts: Inter for body, Exo 2 for headings -->
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet"
-      />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-      <!-- Lucide Icons -->
-      <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
+    <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
 
-      <!-- SEO Meta Tags -->
-      <meta
-        name="description"
-        content="ChitraHarsha (CHR) - A next-generation cryptocurrency platform leveraging AI, Quantum-ready speed, and supercomputer technology for secure, instant, and intelligent transactions."
-      />
-      <meta
-        name="keywords"
-        content="ChitraHarsha, CHR, Cryptocurrency, Blockchain, AI, Quantum Computing, BigQuery, Google Cloud, NLP, Web3, Decentralised Cryptocurrency, Crypto Wallet"
-      />
+    <meta
+      name="description"
+      content="ChitraHarsha (CHR) - A next-generation cryptocurrency platform leveraging AI, Quantum-ready speed, and supercomputer technology for secure, instant, and intelligent transactions."
+    />
+    <meta
+      name="keywords"
+      content="ChitraHarsha, CHR, Cryptocurrency, Blockchain, AI, Quantum Computing, BigQuery, Google Cloud, NLP, Web3, Decentralised Cryptocurrency, Crypto Wallet"
+    />
 
-      <style>
-        /* Custom styles for the futuristic theme and animations */
-        :root {
-          --primary-glow: rgba(59, 130, 246, 0.4);
-          --secondary-glow: rgba(139, 92, 246, 0.4);
+    <style>
+      /* Custom styles for the futuristic theme and animations */
+      :root {
+        --primary-glow: rgba(59, 130, 246, 0.4);
+        --secondary-glow: rgba(139, 92, 246, 0.4);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0d0f1a;
+        color: #e0e0e0;
+        overflow-x: hidden;
+      }
+
+      .font-exo {
+        font-family: "Exo 2", sans-serif;
+      }
+
+      /* Moving Aurora Background */
+      .aurora-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: radial-gradient(
+            ellipse at 40% 20%,
+            var(--primary-glow) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 60% 80%,
+            var(--secondary-glow) 0%,
+            transparent 50%
+          );
+        animation: aurora 15s linear infinite;
+      }
+
+      @keyframes aurora {
+        0% {
+          background-position: 0% 50%;
         }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
 
-        body {
-          font-family: "Inter", sans-serif;
-          background-color: #0d0f1a;
-          color: #e0e0e0;
-          overflow-x: hidden;
-        }
+      /* Glassmorphism Effect */
+      .glass-card {
+        background: rgba(23, 26, 43, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+      }
 
-        .font-exo {
-          font-family: "Exo 2", sans-serif;
-        }
+      /* Gradient Text */
+      .gradient-text {
+        background: linear-gradient(90deg, #818cf8, #a78bfa);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        /* Moving Aurora Background */
-        .aurora-background {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-          background: radial-gradient(
-              ellipse at 40% 20%,
-              var(--primary-glow) 0%,
-              transparent 50%
-            ),
-            radial-gradient(
-              ellipse at 60% 80%,
-              var(--secondary-glow) 0%,
-              transparent 50%
-            );
-          animation: aurora 15s linear infinite;
-        }
+      /* Scroll-triggered animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-        @keyframes aurora {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        /* Glassmorphism Effect */
-        .glass-card {
-          background: rgba(23, 26, 43, 0.6);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 1rem;
-        }
-
-        /* Gradient Text */
-        .gradient-text {
-          background: linear-gradient(90deg, #818cf8, #a78bfa);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        /* Scroll-triggered animations */
-        .reveal {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        /* Lightning Canvas */
-        #lightning-canvas {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 0;
-          opacity: 0.6;
-        }
-      </style>
-    </head>
-    <body class="antialiased">
-      <div class="aurora-background"></div>
-      <div class="relative min-h-screen">
-        <!-- Header -->
-        <header
-          id="header"
-          class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      /* Lightning Canvas */
+      #lightning-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div class="aurora-background"></div>
+    <div class="relative min-h-screen">
+      <header
+        id="header"
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      >
+        <nav
+          class="container mx-auto px-6 py-4 flex justify-between items-center"
         >
-          <nav
-            class="container mx-auto px-6 py-4 flex justify-between items-center"
-          >
-            <div class="flex items-center space-x-3">
-              <!-- SVG Logo -->
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 256 256"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88Z"
-                  fill="url(#paint0_linear_1_2)"
-                />
-                <path
-                  d="M168 88h-16v80h16a40 40 0 0 0 0-80Zm-8 64v-48a24 24 0 0 1 0 48Z"
-                  fill="url(#paint1_linear_1_2)"
-                />
-                <path
-                  d="M120 128a40 40 0 0 1-40-40h16a24 24 0 0 0 24 24Z"
-                  fill="url(#paint2_linear_1_2)"
-                />
-                <path
-                  d="M120 128a40 40 0 0 0-40 40h16a24 24 0 0 1 24-24Z"
-                  fill="url(#paint3_linear_1_2)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_1_2"
-                    x1="128"
-                    y1="24"
-                    x2="128"
-                    y2="232"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stop-color="#A78BFA" />
-                    <stop offset="1" stop-color="#3B82F6" />
-                  </linearGradient>
-                  <linearGradient
-                    id="paint1_linear_1_2"
-                    x1="152"
-                    y1="88"
-                    x2="152"
-                    y2="168"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stop-color="#C4B5FD" />
-                    <stop offset="1" stop-color="#60A5FA" />
-                  </linearGradient>
-                  <linearGradient
-                    id="paint2_linear_1_2"
-                    x1="100"
-                    y1="88"
-                    x2="100"
-                    y2="128"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stop-color="#C4B5FD" />
-                    <stop offset="1" stop-color="#60A5FA" />
-                  </linearGradient>
-                  <linearGradient
-                    id="paint3_linear_1_2"
-                    x1="100"
-                    y1="128"
-                    x2="100"
-                    y2="168"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stop-color="#C4B5FD" />
-                    <stop offset="1" stop-color="#60A5FA" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <span
-                class="font-exo text-2xl font-bold text-white tracking-wider"
-                >ChitraHarsha</span
-              >
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
-              <a href="#home" class="text-gray-300 hover:text-white transition"
-                >Home</a
-              >
-              <a
-                href="#features"
-                class="text-gray-300 hover:text-white transition"
-                >Features</a
-              >
-              <a href="#stack" class="text-gray-300 hover:text-white transition"
-                >Technology</a
-              >
-              <a href="#blogs" class="text-gray-300 hover:text-white transition"
-                >Blogs</a
-              >
-            </div>
-            <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-3">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 256 256"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88Z"
+                fill="url(#paint0_linear_1_2)"
+              />
+              <path
+                d="M168 88h-16v80h16a40 40 0 0 0 0-80Zm-8 64v-48a24 24 0 0 1 0 48Z"
+                fill="url(#paint1_linear_1_2)"
+              />
+              <path
+                d="M120 128a40 40 0 0 1-40-40h16a24 24 0 0 0 24 24Z"
+                fill="url(#paint2_linear_1_2)"
+              />
+              <path
+                d="M120 128a40 40 0 0 0-40 40h16a24 24 0 0 1 24-24Z"
+                fill="url(#paint3_linear_1_2)"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_1_2"
+                  x1="128"
+                  y1="24"
+                  x2="128"
+                  y2="232"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#A78BFA" />
+                  <stop offset="1" stop-color="#3B82F6" />
+                </linearGradient>
+                <linearGradient
+                  id="paint1_linear_1_2"
+                  x1="152"
+                  y1="88"
+                  x2="152"
+                  y2="168"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#C4B5FD" />
+                  <stop offset="1" stop-color="#60A5FA" />
+                </linearGradient>
+                <linearGradient
+                  id="paint2_linear_1_2"
+                  x1="100"
+                  y1="88"
+                  x2="100"
+                  y2="128"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#C4B5FD" />
+                  <stop offset="1" stop-color="#60A5FA" />
+                </linearGradient>
+                <linearGradient
+                  id="paint3_linear_1_2"
+                  x1="100"
+                  y1="128"
+                  x2="100"
+                  y2="168"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#C4B5FD" />
+                  <stop offset="1" stop-color="#60A5FA" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="font-exo text-2xl font-bold text-white tracking-wider"
+              >ChitraHarsha</span
+            >
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#home" class="text-gray-300 hover:text-white transition"
+              >Home</a
+            >
+            <a
+              href="#features"
+              class="text-gray-300 hover:text-white transition"
+              >Features</a
+            >
+            <a href="#stack" class="text-gray-300 hover:text-white transition"
+              >Technology</a
+            >
+            <a href="#blogs" class="text-gray-300 hover:text-white transition"
+              >Blogs</a
+            >
+            <a href="#contact" class="text-gray-300 hover:text-white transition"
+              >Contact</a
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <button
+              class="px-4 py-2 text-sm font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg shadow-lg transition transform hover:scale-105"
+            >
+              Launch App
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main class="pt-20">
+        <section
+          id="home"
+          class="relative h-[90vh] flex items-center justify-center text-center overflow-hidden"
+        >
+          <canvas id="lightning-canvas"></canvas>
+          <div class="relative z-10 container mx-auto px-6">
+            <h1
+              class="font-exo text-5xl md:text-7xl font-extrabold text-white leading-tight"
+            >
+              Chitra<span class="gradient-text">Harsha</span>
+            </h1>
+            <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              Brilliant Joy in Every Transaction. The world's first crypto
+              platform powered by Quantum-ready architecture and
+              Supercomputer-grade AI for unparalleled speed and intelligence.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
               <button
-                class="px-4 py-2 text-sm font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg shadow-lg transition transform hover:scale-105"
+                class="px-8 py-3 font-semibold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-lg shadow-violet-500/30 transition transform hover:scale-105"
               >
-                Launch App
+                Create Your Wallet
+              </button>
+              <button
+                class="px-8 py-3 font-semibold text-white bg-white/10 border border-white/20 hover:bg-white/20 rounded-xl transition"
+              >
+                Explore Whitepaper
               </button>
             </div>
-          </nav>
-        </header>
+            <p class="mt-4 text-xs text-gray-400">
+              Secured with quantum-resistant encryption and passkey technology.
+            </p>
+          </div>
+        </section>
 
-        <main class="pt-20">
-          <!-- Hero Section -->
-          <section
-            id="home"
-            class="relative h-[90vh] flex items-center justify-center text-center overflow-hidden"
-          >
-            <canvas id="lightning-canvas"></canvas>
-            <div class="relative z-10 container mx-auto px-6">
-              <h1
-                class="font-exo text-5xl md:text-7xl font-extrabold text-white leading-tight"
-              >
-                Chitra<span class="gradient-text">Harsha</span>
-              </h1>
-              <p
-                class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
-              >
-                Brilliant Joy in Every Transaction. The world's first crypto
-                platform powered by Quantum-ready architecture and
-                Supercomputer-grade AI for unparalleled speed and intelligence.
+        <section id="features" class="py-20">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+              <h2 class="font-exo text-4xl font-bold text-white">
+                The Future, Today.
+              </h2>
+              <p class="mt-2 text-gray-400">
+                Discover the technologies that set ChitraHarsha apart.
               </p>
-              <div class="mt-8 flex justify-center gap-4">
-                <button
-                  class="px-8 py-3 font-semibold text-white bg-violet-600 hover:bg-violet-700 rounded-xl shadow-lg shadow-violet-500/30 transition transform hover:scale-105"
-                >
-                  Create Your Wallet
-                </button>
-                <button
-                  class="px-8 py-3 font-semibold text-white bg-white/10 border border-white/20 hover:bg-white/20 rounded-xl transition"
-                >
-                  Explore Whitepaper
-                </button>
-              </div>
             </div>
-          </section>
-
-          <!-- Features Section -->
-          <section id="features" class="py-20">
-            <div class="container mx-auto px-6">
-              <div class="text-center mb-12 reveal">
-                <h2 class="font-exo text-4xl font-bold text-white">
-                  The Future, Today.
-                </h2>
-                <p class="mt-2 text-gray-400">
-                  Discover the technologies that set ChitraHarsha apart.
-                </p>
-              </div>
-              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-card p-6 text-center reveal">
-                  <h3 class="font-exo text-xl font-bold text-white">
-                    Quantum & Supercomputer Core
-                  </h3>
-                  <p class="mt-2 text-gray-400 text-sm">
-                    Our hybrid architecture processes transactions at
-                    near-instant speeds, preparing for the quantum computing
-                    era.
-                  </p>
-                </div>
-                <div
-                  class="glass-card p-6 text-center reveal"
-                  style="transition-delay: 100ms"
-                >
-                  <h3 class="font-exo text-xl font-bold text-white">
-                    AI Crypto Lens
-                  </h3>
-                  <p class="mt-2 text-gray-400 text-sm">
-                    Scan anything with your camera. Our AI identifies objects,
-                    provides market data, and suggests CHR payment options.
-                  </p>
-                </div>
-                <div
-                  class="glass-card p-6 text-center reveal"
-                  style="transition-delay: 200ms"
-                >
-                  <h3 class="font-exo text-xl font-bold text-white">
-                    Encrypted & Secure
-                  </h3>
-                  <p class="mt-2 text-gray-400 text-sm">
-                    With immutable blockchain management and end-to-end data
-                    encryption, your assets are fundamentally secure.
-                  </p>
-                </div>
-                <div
-                  class="glass-card p-6 text-center reveal"
-                  style="transition-delay: 300ms"
-                >
-                  <h3 class="font-exo text-xl font-bold text-white">
-                    BigQuery Analytics
-                  </h3>
-                  <p class="mt-2 text-gray-400 text-sm">
-                    Leveraging Google BigQuery for complex analytics, NLP-driven
-                    insights, and predictive AI models.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Tech Stack Section -->
-          <section id="stack" class="py-20 bg-black/20">
-            <div class="container mx-auto px-6">
-              <div class="text-center mb-12 reveal">
-                <h2 class="font-exo text-4xl font-bold text-white">
-                  Our Future-Ready Technology Stack
-                </h2>
-                <p class="mt-2 text-gray-400">
-                  Built on a foundation of best-in-class, scalable, and secure
-                  technologies.
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div class="glass-card p-6 text-center reveal">
+                <h3 class="font-exo text-xl font-bold text-white">
+                  Quantum & Supercomputer Core
+                </h3>
+                <p class="mt-2 text-gray-400 text-sm">
+                  Our hybrid architecture processes transactions at near-instant
+                  speeds, preparing for the quantum computing era.
                 </p>
               </div>
               <div
-                class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+                class="glass-card p-6 text-center reveal"
+                style="transition-delay: 100ms"
               >
-                <div class="reveal">
-                  <img
-                    src="https://placehold.co/120x120/1f2937/a78bfa?text=CF"
-                    alt="Cloudflare"
-                    class="mx-auto rounded-full w-24 h-24 border-2 border-violet-500 p-1"
-                  />
-                  <h3 class="mt-4 font-bold text-white">Cloudflare Pages</h3>
-                  <p class="text-sm text-gray-400 mt-1">
-                    Global, low-latency deployment for instant web app access.
-                  </p>
-                </div>
-                <div class="reveal" style="transition-delay: 100ms">
-                  <img
-                    src="https://placehold.co/120x120/1f2937/818cf8?text=FS"
-                    alt="Firestore"
-                    class="mx-auto rounded-full w-24 h-24 border-2 border-indigo-500 p-1"
-                  />
-                  <h3 class="mt-4 font-bold text-white">Google Firestore</h3>
-                  <p class="text-sm text-gray-400 mt-1">
-                    Real-time, encrypted database for user data and fast
-                    operations.
-                  </p>
-                </div>
-                <div class="reveal" style="transition-delay: 200ms">
-                  <img
-                    src="https://placehold.co/120x120/1f2937/60a5fa?text=BQ"
-                    alt="BigQuery"
-                    class="mx-auto rounded-full w-24 h-24 border-2 border-blue-500 p-1"
-                  />
-                  <h3 class="mt-4 font-bold text-white">Google BigQuery</h3>
-                  <p class="text-sm text-gray-400 mt-1">
-                    Planet-scale data warehouse for complex SQL queries and
-                    AI/ML models.
-                  </p>
-                </div>
-                <div class="reveal" style="transition-delay: 300ms">
-                  <img
-                    src="https://placehold.co/120x120/1f2937/f472b6?text=AI"
-                    alt="Gemini AI"
-                    class="mx-auto rounded-full w-24 h-24 border-2 border-pink-500 p-1"
-                  />
-                  <h3 class="mt-4 font-bold text-white">Gemini & Vision AI</h3>
-                  <p class="text-sm text-gray-400 mt-1">
-                    Advanced AI models for the Crypto Lens, chatbot, and NLP
-                    tasks.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Blogs Section -->
-          <section id="blogs" class="py-20">
-            <div class="container mx-auto px-6">
-              <div class="text-center mb-12 reveal">
-                <h2 class="font-exo text-4xl font-bold text-white">
-                  Insights from the New Economy
-                </h2>
-                <p class="mt-2 text-gray-400">
-                  Read our latest articles on DeFi, AI in Blockchain, and the
-                  future of finance.
+                <h3 class="font-exo text-xl font-bold text-white">
+                  AI Crypto Lens
+                </h3>
+                <p class="mt-2 text-gray-400 text-sm">
+                  Scan anything with your camera. Our AI identifies objects,
+                  provides market data, and suggests CHR payment options.
                 </p>
               </div>
-              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass-card overflow-hidden reveal">
-                  <img
-                    src="https://placehold.co/600x400/111827/a78bfa?text=DeFi+2.0"
-                    alt="Blog Image 1"
-                    class="w-full h-48 object-cover"
-                  />
-                  <div class="p-6">
-                    <h3 class="font-exo text-xl font-bold text-white">
-                      The Quantum Leap: Preparing for the Future
-                    </h3>
-                    <p class="mt-3 text-gray-400 text-sm">
-                      Quantum computers pose a threat to current encryption
-                      standards. Discover how ChitraHarsha's quantum-resistant
-                      ledger is built for long-term security.
-                    </p>
-                    <a
-                      href="#"
-                      class="inline-block mt-4 font-semibold text-indigo-400 hover:text-indigo-300"
-                      >Read More &rarr;</a
-                    >
-                  </div>
+              <div
+                class="glass-card p-6 text-center reveal"
+                style="transition-delay: 200ms"
+              >
+                <h3 class="font-exo text-xl font-bold text-white">
+                  Encrypted & Secure
+                </h3>
+                <p class="mt-2 text-gray-400 text-sm">
+                  With immutable blockchain management and end-to-end data
+                  encryption, your assets are fundamentally secure.
+                </p>
+              </div>
+              <div
+                class="glass-card p-6 text-center reveal"
+                style="transition-delay: 300ms"
+              >
+                <h3 class="font-exo text-xl font-bold text-white">
+                  BigQuery Analytics
+                </h3>
+                <p class="mt-2 text-gray-400 text-sm">
+                  Leveraging Google BigQuery for complex analytics, NLP-driven
+                  insights, and predictive AI models.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="stack" class="py-20 bg-black/20">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+              <h2 class="font-exo text-4xl font-bold text-white">
+                Our Future-Ready Technology Stack
+              </h2>
+              <p class="mt-2 text-gray-400">
+                Built on a foundation of best-in-class, scalable, and secure
+                technologies.
+              </p>
+            </div>
+            <div
+              class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+            >
+              <div class="reveal">
+                <img
+                  src="https://placehold.co/120x120/1f2937/a78bfa?text=CF"
+                  alt="Cloudflare"
+                  class="mx-auto rounded-full w-24 h-24 border-2 border-violet-500 p-1"
+                />
+                <h3 class="mt-4 font-bold text-white">Cloudflare Pages</h3>
+                <p class="text-sm text-gray-400 mt-1">
+                  Global, low-latency deployment for instant web app access.
+                </p>
+              </div>
+              <div class="reveal" style="transition-delay: 100ms">
+                <img
+                  src="https://placehold.co/120x120/1f2937/818cf8?text=FS"
+                  alt="Firestore"
+                  class="mx-auto rounded-full w-24 h-24 border-2 border-indigo-500 p-1"
+                />
+                <h3 class="mt-4 font-bold text-white">Google Firestore</h3>
+                <p class="text-sm text-gray-400 mt-1">
+                  Real-time, encrypted database for user data and fast
+                  operations.
+                </p>
+              </div>
+              <div class="reveal" style="transition-delay: 200ms">
+                <img
+                  src="https://placehold.co/120x120/1f2937/60a5fa?text=BQ"
+                  alt="BigQuery"
+                  class="mx-auto rounded-full w-24 h-24 border-2 border-blue-500 p-1"
+                />
+                <h3 class="mt-4 font-bold text-white">Google BigQuery</h3>
+                <p class="text-sm text-gray-400 mt-1">
+                  Planet-scale data warehouse for complex SQL queries and AI/ML
+                  models.
+                </p>
+              </div>
+              <div class="reveal" style="transition-delay: 300ms">
+                <img
+                  src="https://placehold.co/120x120/1f2937/f472b6?text=AI"
+                  alt="Gemini AI"
+                  class="mx-auto rounded-full w-24 h-24 border-2 border-pink-500 p-1"
+                />
+                <h3 class="mt-4 font-bold text-white">Gemini & Vision AI</h3>
+                <p class="text-sm text-gray-400 mt-1">
+                  Advanced AI models for the Crypto Lens, chatbot, and NLP
+                  tasks.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="blogs" class="py-20">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+              <h2 class="font-exo text-4xl font-bold text-white">
+                Insights from the New Economy
+              </h2>
+              <p class="mt-2 text-gray-400">
+                Read our latest articles on DeFi, AI in Blockchain, and the
+                future of finance.
+              </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="glass-card overflow-hidden reveal">
+                <img
+                  src="https://placehold.co/600x400/111827/a78bfa?text=DeFi+2.0"
+                  alt="Blog Image 1"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-6">
+                  <h3 class="font-exo text-xl font-bold text-white">
+                    The Quantum Leap: Preparing for the Future
+                  </h3>
+                  <p class="mt-3 text-gray-400 text-sm">
+                    Quantum computers pose a threat to current encryption
+                    standards. Discover how ChitraHarsha's quantum-resistant
+                    ledger is built for long-term security.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-block mt-4 font-semibold text-indigo-400 hover:text-indigo-300"
+                    >Read More &rarr;</a
+                  >
                 </div>
-                <div
-                  class="glass-card overflow-hidden reveal"
-                  style="transition-delay: 150ms"
-                >
-                  <img
-                    src="https://placehold.co/600x400/111827/818cf8?text=AI+in+Crypto"
-                    alt="Blog Image 2"
-                    class="w-full h-48 object-cover"
-                  />
-                  <div class="p-6">
-                    <h3 class="font-exo text-xl font-bold text-white">
-                      From Data to Decisions with BigQuery ML
-                    </h3>
-                    <p class="mt-3 text-gray-400 text-sm">
-                      Learn how we use Google BigQuery's built-in AI to run
-                      predictive models for fraud detection and market analysis
-                      directly on our blockchain data.
-                    </p>
-                    <a
-                      href="#"
-                      class="inline-block mt-4 font-semibold text-indigo-400 hover:text-indigo-300"
-                      >Read More &rarr;</a
-                    >
-                  </div>
+              </div>
+              <div
+                class="glass-card overflow-hidden reveal"
+                style="transition-delay: 150ms"
+              >
+                <img
+                  src="https://placehold.co/600x400/111827/818cf8?text=AI+in+Crypto"
+                  alt="Blog Image 2"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-6">
+                  <h3 class="font-exo text-xl font-bold text-white">
+                    From Data to Decisions with BigQuery ML
+                  </h3>
+                  <p class="mt-3 text-gray-400 text-sm">
+                    Learn how we use Google BigQuery's built-in AI to run
+                    predictive models for fraud detection and market analysis
+                    directly on our blockchain data.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-block mt-4 font-semibold text-indigo-400 hover:text-indigo-300"
+                    >Read More &rarr;</a
+                  >
                 </div>
-                <div
-                  class="glass-card overflow-hidden reveal"
-                  style="transition-delay: 300ms"
-                >
-                  <img
-                    src="https://placehold.co/600x400/111827/ffffff?text=Web3+Security"
-                    alt="Blog Image 3"
-                    class="w-full h-48 object-cover"
-                  />
-                  <div class="p-6">
-                    <h3 class="font-exo text-xl font-bold text-white">
-                      What Are Passkeys? A Simpler, More Secure Future
-                    </h3>
-                    <p class="mt-3 text-gray-400 text-sm">
-                      Passwords are a thing of the past. We break down how
-                      Passkey technology works and why it's the new gold
-                      standard for securing your ChitraHarsha assets.
-                    </p>
-                    <a
-                      href="#"
-                      class="inline-block mt-4 font-semibold text-indigo-400 hover:text-indigo-300"
-                      >Read More &rarr;</a
-                    >
-                  </div>
+              </div>
+              <div
+                class="glass-card overflow-hidden reveal"
+                style="transition-delay: 300ms"
+              >
+                <img
+                  src="https://placehold.co/600x400/111827/ffffff?text=Web3+Security"
+                  alt="Blog Image 3"
+                  class="w-full h-48 object-cover"
+                />
+                <div class="p-6">
+                  <h3 class="font-exo text-xl font-bold text-white">
+                    What Are Passkeys? A Simpler, More Secure Future
+                  </h3>
+                  <p class="mt-3 text-gray-400 text-sm">
+                    Passwords are a thing of the past. We break down how Passkey
+                    technology works and why it's the new gold standard for
+                    securing your ChitraHarsha assets.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-block mt-4 font-semibold text-indigo-400 hover:text-indigo-300"
+                    >Read More &rarr;</a
+                  >
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <!-- Contact Section -->
-          <section id="contact" class="py-20 bg-black/20">
-            <!-- Contact form remains unchanged -->
-          </section>
-        </main>
+        <section id="contact" class="py-20 bg-black/20">
+          <div class="container mx-auto px-6 reveal">
+            <div class="max-w-2xl mx-auto text-center">
+              <h2 class="font-exo text-4xl font-bold text-white">
+                Get In Touch
+              </h2>
+              <p class="mt-2 text-gray-400 mb-8">
+                Have questions about our technology or want to partner with us?
+                We’d love to hear from you.
+              </p>
+              <form action="#" method="POST" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                    class="w-full bg-gray-800/50 border border-white/20 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    required
+                    class="w-full bg-gray-800/50 border border-white/20 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  />
+                </div>
+                <textarea
+                  placeholder="Your Message"
+                  rows="5"
+                  required
+                  class="w-full bg-gray-800/50 border border-white/20 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                ></textarea>
+                <button
+                  type="submit"
+                  class="px-8 py-3 font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30 transition transform hover:scale-105"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
 
-        <!-- Footer -->
-        <footer class="bg-gray-900/50">
-          <!-- Footer remains unchanged -->
-        </footer>
-      </div>
+      <footer class="bg-gray-900/50 border-t border-white/10">
+        <div class="container mx-auto px-6 py-8">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-6 md:space-y-0"
+          >
+            <div>
+              <div
+                class="flex items-center justify-center md:justify-start space-x-3"
+              >
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 256 256"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88Z"
+                    fill="url(#paint0_linear_footer)"
+                  />
+                  <path
+                    d="M168 88h-16v80h16a40 40 0 0 0 0-80Zm-8 64v-48a24 24 0 0 1 0 48Z"
+                    fill="url(#paint1_linear_footer)"
+                  />
+                  <path
+                    d="M120 128a40 40 0 0 1-40-40h16a24 24 0 0 0 24 24Z"
+                    fill="url(#paint2_linear_footer)"
+                  />
+                  <path
+                    d="M120 128a40 40 0 0 0-40 40h16a24 24 0 0 1 24-24Z"
+                    fill="url(#paint3_linear_footer)"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_footer"
+                      x1="128"
+                      y1="24"
+                      x2="128"
+                      y2="232"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#A78BFA" />
+                      <stop offset="1" stop-color="#3B82F6" />
+                    </linearGradient>
+                    <linearGradient
+                      id="paint1_linear_footer"
+                      x1="152"
+                      y1="88"
+                      x2="152"
+                      y2="168"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#C4B5FD" />
+                      <stop offset="1" stop-color="#60A5FA" />
+                    </linearGradient>
+                    <linearGradient
+                      id="paint2_linear_footer"
+                      x1="100"
+                      y1="88"
+                      x2="100"
+                      y2="128"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#C4B5FD" />
+                      <stop offset="1" stop-color="#60A5FA" />
+                    </linearGradient>
+                    <linearGradient
+                      id="paint3_linear_footer"
+                      x1="100"
+                      y1="128"
+                      x2="100"
+                      y2="168"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#C4B5FD" />
+                      <stop offset="1" stop-color="#60A5FA" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span
+                  class="font-exo text-xl font-bold text-white tracking-wider"
+                  >ChitraHarsha</span
+                >
+              </div>
+              <p class="mt-2 text-sm text-gray-400">
+                &copy; 2025 ChitraHarsha. All Rights Reserved.
+              </p>
+            </div>
+            <div class="flex space-x-6">
+              <a href="#" class="text-gray-400 hover:text-white transition"
+                >Privacy Policy</a
+              >
+              <a href="#" class="text-gray-400 hover:text-white transition"
+                >Terms of Service</a
+              >
+              <a
+                href="#contact"
+                class="text-gray-400 hover:text-white transition"
+                >Contact</a
+              >
+            </div>
+          </div>
+          <div
+            class="mt-8 pt-6 border-t border-white/10 text-center text-xs text-gray-500"
+          >
+            <p class="font-semibold text-amber-400">Important Disclaimer:</p>
+            <p>
+              Cryptocurrency investments are subject to high market risk. Please
+              conduct your own research and invest cautiously. ChitraHarsha is
+              not responsible for any direct or indirect losses. The information
+              provided on this website does not constitute investment advice.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
 
-      <script>
-        // All JavaScript from previous version remains the same
-        document.addEventListener("DOMContentLoaded", function () {
-          const header = document.getElementById("header");
-          window.addEventListener("scroll", () => {
-            if (window.scrollY > 50) {
-              header.classList.add(
-                "bg-gray-900/80",
-                "backdrop-blur-sm",
-                "shadow-lg"
-              );
-            } else {
-              header.classList.remove(
-                "bg-gray-900/80",
-                "backdrop-blur-sm",
-                "shadow-lg"
-              );
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            header.classList.add(
+              "bg-gray-900/80",
+              "backdrop-blur-sm",
+              "shadow-lg"
+            );
+          } else {
+            header.classList.remove(
+              "bg-gray-900/80",
+              "backdrop-blur-sm",
+              "shadow-lg"
+            );
+          }
+        });
+
+        const canvas = document.getElementById("lightning-canvas");
+        const ctx = canvas.getContext("2d");
+        let w,
+          h,
+          lightning = [];
+
+        function initCanvas() {
+          w = canvas.width = window.innerWidth;
+          h = canvas.offsetHeight; // Use offsetHeight for better accuracy
+          lightning = [];
+        }
+        initCanvas();
+        window.addEventListener("resize", initCanvas);
+
+        class Lightning {
+          constructor() {
+            this.x = Math.random() * w;
+            this.y = (Math.random() * h) / 4;
+            this.path = [{ x: this.x, y: this.y }];
+            this.life = 0;
+            this.maxLife = Math.random() * 20 + 10;
+            this.color = `rgba(167, 139, 250, ${Math.random() * 0.4 + 0.2})`;
+          }
+          draw() {
+            ctx.beginPath();
+            ctx.moveTo(this.path[0].x, this.path[0].y);
+            for (let i = 1; i < this.path.length; i++) {
+              ctx.lineTo(this.path[i].x, this.path[i].y);
+            }
+            ctx.strokeStyle = this.color;
+            ctx.lineWidth = Math.random() * 2 + 1;
+            ctx.stroke();
+            this.update();
+          }
+          update() {
+            this.life++;
+            if (this.life < this.maxLife) {
+              const lastPoint = this.path[this.path.length - 1];
+              const newPoint = {
+                x: lastPoint.x + (Math.random() * 20 - 10),
+                y: lastPoint.y + (Math.random() * 15 + 5),
+              };
+              this.path.push(newPoint);
+            }
+          }
+        }
+
+        function animateLightning() {
+          ctx.clearRect(0, 0, w, h);
+          if (Math.random() < 0.05) {
+            lightning.push(new Lightning());
+          }
+          lightning.forEach((l, index) => {
+            l.draw();
+            if (l.life >= l.maxLife) {
+              lightning.splice(index, 1);
             }
           });
+          requestAnimationFrame(animateLightning);
+        }
+        animateLightning();
 
-          const canvas = document.getElementById("lightning-canvas");
-          const ctx = canvas.getContext("2d");
-          let w,
-            h,
-            lightning = [];
-
-          function initCanvas() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = canvas.offsetHeight;
-            lightning = [];
-          }
-          initCanvas();
-          window.addEventListener("resize", initCanvas);
-
-          class Lightning {
-            constructor() {
-              this.x = Math.random() * w;
-              this.y = (Math.random() * h) / 4;
-              this.path = [{ x: this.x, y: this.y }];
-              this.life = 0;
-              this.maxLife = Math.random() * 20 + 10;
-              this.color = `rgba(167, 139, 250, ${Math.random() * 0.4 + 0.2})`;
-            }
-            draw() {
-              ctx.beginPath();
-              ctx.moveTo(this.path[0].x, this.path[0].y);
-              for (let i = 1; i < this.path.length; i++) {
-                ctx.lineTo(this.path[i].x, this.path[i].y);
-              }
-              ctx.strokeStyle = this.color;
-              ctx.lineWidth = Math.random() * 2 + 1;
-              ctx.stroke();
-              this.update();
-            }
-            update() {
-              this.life++;
-              if (this.life < this.maxLife) {
-                const lastPoint = this.path[this.path.length - 1];
-                const newPoint = {
-                  x: lastPoint.x + (Math.random() * 20 - 10),
-                  y: lastPoint.y + (Math.random() * 15 + 5),
-                };
-                this.path.push(newPoint);
-              }
-            }
-          }
-
-          function animateLightning() {
-            ctx.clearRect(0, 0, w, h);
-            if (Math.random() < 0.05) {
-              lightning.push(new Lightning());
-            }
-            lightning.forEach((l, index) => {
-              l.draw();
-              if (l.life >= l.maxLife) {
-                lightning.splice(index, 1);
+        const revealElements = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
               }
             });
-            requestAnimationFrame(animateLightning);
-          }
-          animateLightning();
-
-          const revealElements = document.querySelectorAll(".reveal");
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
-                }
-              });
-            },
-            { threshold: 0.1 }
-          );
-          revealElements.forEach((el) => observer.observe(el));
-        });
-      </script>
-    </body>
-  </html></universeissilent@gmail.com
->
+          },
+          { threshold: 0.1 }
+        );
+        revealElements.forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>
